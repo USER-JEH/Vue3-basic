@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+    <script type="text/javascript">
+      let person = {
+        name:'tom',
+        sex:'man'
+      }
+      
+      const p = new Proxy(person,{
+        get(target,propName){
+          console.log(`read ${propName} proparty`)
+          // return target[propName]
+          return Reflect.get(target,propName)
+        },
+
+        set(target,propName,value){
+          console.log(`change ${propName} proparty`)
+          // target[propName] = value
+          Reflect.set(target,propName,value)
+        },
+
+        deleteProperty(target,propName){
+          console.log(`delet ${propName} proparty`)
+          // return delete target[propName]
+          return Reflect.defineProperty(target,propName)
+        }
+      })
+
+    // let obj = {a:1,b:100}
+    // const x1 = Reflect.defineProperty(obj,'c',{
+    //   get(){
+    //     return 3
+    //   }
+    // })
+    // console.log(x1)
+
+    // const x2 = Reflect.defineProperty(obj,'c',{
+    //   get(){
+    //     return 4
+    //   }
+    // })
+    
+    // if(x2){
+    //   console.log('sussess')
+    // }else{
+    //   console.log('fale')
+    // }
+
+    console.log('ok')
+    </script>
+</body>
+</html>
