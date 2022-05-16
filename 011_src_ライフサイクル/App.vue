@@ -1,6 +1,5 @@
 <template>
 <button @click="isShowDemo = !isShowDemo">on/off</button>
-<hr>
 <Demo v-if="isShowDemo"/>
 </template>
 
