@@ -1,4 +1,7 @@
 <template>
+<h4>sum is :{{sum}}</h4>
+<button @click="sum++">click add 1</button>
+<hr>
 <h2>name:{{name}}</h2>
 <h2>age:{{age}}</h2>
 <h2>salary:{{job.j1.salary}}</h2>
@@ -9,29 +12,25 @@
 
 <script>
 // import {h} from 'vue'
-import {reactive,toRef,toRefs} from 'vue'
+import {ref,reactive,toRefs,readonly,shallowReadonly} from 'vue'
 export default {
   name: 'Demo',
   setup(){
+    let sum = ref(0)
     let person = reactive({
-      name:'zhangsan',
-      age:18,
-      job:{
-        j1:{
-          salary:20
+        name:'zhangsan',
+        age:18,
+        job:{
+          j1:{
+            salary:20
+          }
         }
-      }
-    })
+      })
+    //  person = readonly(person)
+    // person = shallowReadonly(person)
 
-    const x = toRefs(person)
-    console.log('ok',x)
-    
     return{
-      person,
-      // name:toRef(person,'name'),
-      // age:toRef(person,'age'),
-      // salary:toRef(person.job.j1,'salary')
-
+      sum,
       ...toRefs(person)
     }
   }
