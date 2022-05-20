@@ -1,18 +1,16 @@
 <template>
   <div class="son">
-    <h3>I am son components{{car.name}},{{car.price}}</h3>
+    <h3>I am son components</h3>
+    <Dialog/>
   </div>
 </template>
 
 <script>
-import { inject } from 'vue'
+import Dialog from './Dailog.vue'
 export default {
   name:'Son',
-  setup(){
-    let car = inject('car')
-    return {car}    
+  components:{Dialog}
   }
-}
 </script>
 
 <style>
